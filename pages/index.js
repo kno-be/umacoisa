@@ -8,18 +8,18 @@ export default function Home() {
   const onSubmit = data => {
     let product = new Product(data);
     console.log(product);
-    product.createProduct
+    product.createProduct();
   } 
   return (
-    <div className="flex h-screen w-full bg-black">
-        <form className="flex flex-col"onSubmit={handleSubmit(onSubmit)}>
+    <div className="flex h-screen w-full bg-black ">
+        <form className="flex  flex-col justify-center mx-auto" onSubmit={handleSubmit(onSubmit)}>
           {/* register your input into the hook by invoking the "register" function */}
-          <input className="mt-2" {...register("id")} />
+          <label className="text-xl text-center text-white mb-2">PRODUCT</label>
           <input className="mt-2" {...register("title")} />
           <input className="mt-2" {...register("price")} />
           <input className="mt-2" {...register("imgURL")} />
           <input className="mt-2" {...register("color")} />
-          <input className="mt-2" {...register("tags")} />
+          <input className="my-2" {...register("tags")} />
 
           {/* errors will return when field validation fails  */}
           {errors.exampleRequired && <span>This field is required</span>}
