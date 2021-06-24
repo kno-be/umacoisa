@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Product from "../components/product";
-import "alpinejs";
+
 
 
 export default function Home() {
+
+
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => {
     let product = new Product(data);
@@ -29,14 +31,18 @@ export default function Home() {
           
           <input className="bg-green-800 p-1" type="submit" value="Add"/>
         </form>
-        <div className="flex flex-col justify-center bg-white w-72 h-full my-4 mx-auto ">
-
+        
+        
+        <div className="flex flex-col justify-start w-72 h-full my-4 mx-auto border-2 border-white rounded-md	">
+          <h1 className="text-xl text-center text-white my-2">INVENTORY</h1>
+          <div>
+          
         </div>
-    </div>
+        </div>
+    
+  
+   
+  </div>
+   
   )
-}
-
-
-function editProduct() {
-
 }
