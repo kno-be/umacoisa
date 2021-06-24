@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Product from "../components/product"
+import Product from "../components/product";
+import "alpinejs";
 
 
 export default function Home() {
@@ -10,22 +11,32 @@ export default function Home() {
     console.log(product);
     product.createProduct();
   } 
+
   return (
-    <div className="flex h-screen w-full bg-black ">
-        <form className="flex  flex-col justify-center mx-auto" onSubmit={handleSubmit(onSubmit)}>
+    <div className="flex flex-col h-screen w-full bg-black m-auto">
+        <form className="flex  flex-col justify-center w-56 mx-auto my-4" onSubmit={handleSubmit(onSubmit)}>
           {/* register your input into the hook by invoking the "register" function */}
-          <label className="text-xl text-center text-white mb-2">PRODUCT</label>
-          <input className="mt-2" {...register("title")} />
-          <input className="mt-2" {...register("price")} />
-          <input className="mt-2" {...register("imgURL")} />
-          <input className="mt-2" {...register("color")} />
-          <input className="my-2" {...register("tags")} />
+          <label className="text-xl text-center text-white mb-2">PRODUCTS</label>
+          
+          <input className="mt-2 p-1" placeholder="Title" {...register("title")} />
+          <input className="mt-2 p-1" placeholder="Price" {...register("price")} />
+          <input className="mt-2 p-1" placeholder="Image URL" {...register("imgURL")} />
+          <input className="mt-2 p-1" placeholder="Color" {...register("color")} />
+          <input className="my-2 p-1" placeholder="Tags" {...register("tags")} />
 
           {/* errors will return when field validation fails  */}
           {errors.exampleRequired && <span>This field is required</span>}
           
-          <input type="submit" />
+          <input className="bg-green-800 p-1" type="submit" value="Add"/>
         </form>
+        <div className="flex flex-col justify-center bg-white w-72 h-full my-4 mx-auto ">
+
+        </div>
     </div>
   )
+}
+
+
+function editProduct() {
+
 }

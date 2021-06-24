@@ -1,7 +1,10 @@
 import React from 'react';
 
-var logs = ['1-create', '2-update', '3-remove',];
+
 var count = 0;
+var inventory = [];
+var favorites = [];
+var cart = [];
 
 class Product {
     constructor(props){
@@ -12,14 +15,20 @@ class Product {
 
     }
 
-
-
     createProduct() {
         count++;
-        logs.push("Action: Add", + this.title)
-        console.log(logs[0], [logs.length-1])
+        inventory.push(this)
+        console.log(count + " Added: " + this.title);
+        console.log(inventory);
         
     }
+
+    addFavorites() {
+
+    }
+
+
+
 }
 
 
