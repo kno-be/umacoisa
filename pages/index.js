@@ -2,8 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Product from "../components/product";
 
+var inventory = ['produm', 'proddois', 'prodtreis', ];
 
 export default function Home() {
+
   const [open, setOpen] = React.useState("");
 
   const {
@@ -12,6 +14,7 @@ export default function Home() {
     watch,
     formState: { errors },
   } = useForm();
+  
   const onSubmit = (data) => {
     let product = new Product(data);
     console.log(product);
@@ -28,6 +31,7 @@ export default function Home() {
     event.preventDefault();
   };
 
+
   return (
     <div className="flex flex-col h-screen w-full bg-black m-auto">
       <form
@@ -40,13 +44,20 @@ export default function Home() {
         <input
           className="mt-2 p-1"
           placeholder="Title"
-          {...register("title")}
+          {...register("title", { required: true, maxLength: 20 })}
         />
+        <div className="text-white text-sm text-center ">
+        {errors.title?.type === 'required' && "Product tittle is required"}
+        </div>
         <input
           className="mt-2 p-1"
           placeholder="Price"
-          {...register("price")}
+          type="number"
+          {...register("price",  { required: true, maxLength: 20 })}
         />
+        <div className="text-white text-sm text-center ">
+        {errors.price?.type === 'required' && "Product price is required"}
+        </div>
         <input
           className="mt-2 p-1"
           placeholder="Image URL"
@@ -67,24 +78,23 @@ export default function Home() {
 
       <div className="flex flex-col justify-start w-72 h-full my-4 mx-auto border-2 border-white rounded-md	">
         <h1 className="text-xl text-center text-white my-2">INVENTORY</h1>
-        <div>
           <div className="flex-col">
-            <input
-            value={"id: 1234567890"}
-              type="submit"
-              className="flex flex-col justify-center w-full mx-auto pl-2 mt-4"
-              onClick={() => setOpen(!open)}
-            />
-            <div
-              className={
-                open === true ? "h-12 w-full bg-green-300" : "hidden"
-              }
-            >
-              Content
-            </div>
-          </div>
+
+            {inventory.map((key) => (
+                  <>
+                  <input value={key} type="submit" className="flex flex-col justify-center w-full mx-auto pl-2 mt-4" onClick={() => setOpen(!open)}/>
+                  <div className={open === true ? "h-12 w-full bg-green-300" : "hidden"}>
+                    <h1>Content</h1> 
+                  </div>
+                  </>
+                  ))}
+
+          
         </div>
       </div>
     </div>
+  
+  
   );
 }
+

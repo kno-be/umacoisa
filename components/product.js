@@ -15,12 +15,10 @@ class Product {
 
     }
 
-    createProduct() {
+    createProduct(product) {
         count++;
-        inventory.push(this)
         console.log(count + " Added: " + this.title);
-        console.log(inventory);
-        
+        inventory.push(this);
     }
 
     addFavorites() {
@@ -33,3 +31,7 @@ class Product {
 
 
 export default Product;
+
+
+
+  
