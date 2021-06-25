@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Product from "../components/product";
 
+
 export default function Home() {
   const [open, setOpen] = React.useState("");
 
@@ -69,13 +70,14 @@ export default function Home() {
         <div>
           <div className="flex-col">
             <input
+            value={"id: 1234567890"}
               type="submit"
-              className="flex flex-col justify-center w-56 mx-auto my-4"
+              className="flex flex-col justify-center w-full mx-auto pl-2 mt-4"
               onClick={() => setOpen(!open)}
             />
             <div
               className={
-                open === true ? "flex h-full w-full bg-green-300" : "hidden"
+                open === true ? "h-12 w-full bg-green-300" : "hidden"
               }
             >
               Content
