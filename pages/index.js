@@ -1,12 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Product from "../components/product";
+import data from "../public/data"
+import ProductInfo from "../components/collapse-inventory";
 
-var inventory = ['produm', 'proddois', 'prodtreis', ];
+
 
 export default function Home() {
 
-  const [open, setOpen] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+  const [products, setProducts] = React.useState(data)
+
+
 
   const {
     register,
@@ -14,7 +19,7 @@ export default function Home() {
     watch,
     formState: { errors },
   } = useForm();
-  
+
   const onSubmit = (data) => {
     let product = new Product(data);
     console.log(product);
@@ -22,14 +27,11 @@ export default function Home() {
   };
 
   const toggle = () => {
-    setIsOpened(!isOpened);
-    console.log(isOpened);
-    console.log("chegou aqui");
-  };
 
-  const handleChange = (event) => {
-    event.preventDefault();
-  };
+
+  }
+
+
 
 
   return (
@@ -76,25 +78,24 @@ export default function Home() {
         <input className="bg-green-800 p-1" type="submit" value="Add" />
       </form>
 
-      <div className="flex flex-col justify-start w-72 h-full my-4 mx-auto border-2 border-white rounded-md	">
+      <div className="flex flex-col justify-start w-72 h-full my-4 mx-auto border-2 border-white rounded-md overflow-y-scroll	">
         <h1 className="text-xl text-center text-white my-2">INVENTORY</h1>
           <div className="flex-col">
-
-            {inventory.map((key) => (
+            {products.map((products) => (
                   <>
-                  <input value={key} type="submit" className="flex flex-col justify-center w-full mx-auto pl-2 mt-4" onClick={() => setOpen(!open)}/>
-                  <div className={open === true ? "h-12 w-full bg-green-300" : "hidden"}>
-                    <h1>Content</h1> 
-                  </div>
+                  <ul  className="flex flex-col justify-center w-full mx-auto mt-4"  >
+                    <li> <ProductInfo key={products.id}{...products}></ProductInfo> </li>
+                  </ul>
                   </>
                   ))}
 
-          
+
+
         </div>
       </div>
     </div>
-  
-  
+
+
   );
 }
 
